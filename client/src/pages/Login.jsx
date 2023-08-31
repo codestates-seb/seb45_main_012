@@ -1,4 +1,4 @@
-import '../styles/Login.css'
+import '../styles/Login.css';
 
 const LogIn = () => {
     return (
@@ -9,20 +9,23 @@ const LogIn = () => {
             <div className='form_container'>
                 <form className='login_form'>
                     <div className='id'>
-                        <label for="id">ID 
-                            <input id="id"></input>
-                        </label>
+                        <label for="id">ID</label>
+                        <input id="id"></input>
                     </div>
                     <div className='password'>
-                        <label for="password">Password
-                            <input id="password"></input>
-                        </label>
+                        <label for="password">Password</label>
+                        <input id="password"></input>
                     </div>
-                    <div className='submit'>
-                        <input type="submit" value="로그인" />
+                    <div className='submit_button'>
+                        <input className='submit' type="submit" value="로그인" />
                     </div>
                 </form>
             </div>
+            <div className='links'>
+                    <a href>비밀번호 찾기 </a>
+                    <div className='center'> | </div>
+                    <a href> 회원가입</a>
+                </div>
         </div>
     )
 }

@@ -2,10 +2,82 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    --box-color: rgb(141,198,147);
+    --text-title: rgb(43, 43, 43);
+    --text-sub: rgba(136, 136, 136, 1);
 }
+
 
 .container {
     display: flex;
     flex-direction: column;
-    border: ;
+    justify-content: center;
+    align-items: center;
+    margin: 60px;
+}
+
+
+.logo_container {
+    margin: 15px 0px;
+}
+
+
+.form_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 380px;
+    height: 270px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 3px 0px var(--box-color);
+}
+
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.id {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 25px 0px 15px 0px;
+}
+
+.password {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 8px 0px 13px 0px;
+}
+
+#id, #password {
+    height: 30px;
+    border: 0.5px solid var(--box-color) ;
+    border-radius: 3px;
+}
+
+.submit {
+    background-color: var(--box-color);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    width: 80px;
+    height: 30px;
+    margin: 10px;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    margin: 40px;
+    color: var(--text-sub);
+}
+
+.center {
+    margin: 0px 5px;
 }
