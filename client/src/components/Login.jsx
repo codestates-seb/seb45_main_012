@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import LoginFunc from '../services/auth.login';
 
 const LogIn = () => {
+
     const [ id, setId ] = useState("");
     const [ password, setPassword ] = useState("");
 
@@ -15,10 +16,20 @@ const LogIn = () => {
         setPassword(e.target.value);
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
         console.log('id: ', id);
         console.log('password :', password);
+
+        try {
+            const result = await LoginFunc(id, password);
+            if (result) {
+                window.location.href = '메인 주소';
+            }
+        }
+        catch (err) {
+            console.error();
+        }
     }
 
     const navigate = useNavigate();
