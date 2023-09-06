@@ -1,7 +1,7 @@
 import '../styles/Login.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import LoginFunc from '../services/auth.login';
 
 const LogIn = () => {
     const [ id, setId ] = useState("");
