@@ -1,6 +1,6 @@
 import '../styles/Login.css';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 const LogIn = () => {
@@ -21,6 +21,8 @@ const LogIn = () => {
         console.log('password :', password);
     }
 
+    const navigate = useNavigate();
+
     return (
         <div className='container'>  
             <div className='logo_container'>
@@ -36,7 +38,7 @@ const LogIn = () => {
                         <label htmlFor="password">Password</label>
                         <input id="password" onChange={passwordHandler} />
                     </div>
-                    <div className='submit_button'>
+                    <div className='submit_button' onclick={navigate('/')}>
                         <input className='submit' type="submit" value="로그인" />
                     </div>
                 </form>
