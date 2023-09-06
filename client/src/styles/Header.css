@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header_container {
+    width: 100vw;
+    display: flex;
+}
+
+.header_bar {
+    display: flex;
+    margin: 10px 50px;
+}
+
+.header_bar_list {
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo {
+    max-width: 300px;
+    flex: 1 0 auto;
+}
+
+.header_icon {
+    width: 50px;
+}
+
+.search {
+    flex: 5 0 auto;
+}
+
+.black {
+    color: 43 43 43;
+    flex: 1 0 auto;
+}
+
+.white {
+    color: white;
+}
