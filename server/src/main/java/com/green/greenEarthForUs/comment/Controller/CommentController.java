@@ -35,14 +35,22 @@ public class CommentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdComment);
     }
 
-    @GetMapping("/{post-id}/{user-id}")
-    public ResponseEntity<List<CommentResponseDto>> getComments(@PathVariable(value = "post-id") Long postId,
-                                                                @PathVariable(value = "user-id") Long userId) {
-        List<Comment> comments = commentService.getComments(postId, userId);
-        List<CommentResponseDto> responseDto = mapper.commentListToResponseDtoList(comments);
+//    @GetMapping("/{post-id}/{user-id}")
+//    public ResponseEntity<List<CommentResponseDto>> getComments(@PathVariable(value = "post-id") Long postId,
+//                                                                @PathVariable(value = "user-id") Long userId) {
+//        List<Comment> comments = commentService.getComments(postId, userId);
+//        List<CommentResponseDto> responseDto = mapper.commentListToResponseDtoList(comments);
+//
+//        return ResponseEntity.ok(responseDto);
+//    }
 
-        return ResponseEntity.ok(responseDto);
+    // 게시글 별 댓글 조회
+    @GetMapping("/{post-id}")
+    public ResponseEntity<List<CommentResponseDto>> getCommentsByPostId(@PathVariable(value = "post-id") Long postId) {
+        List<CommentResponseDto> comments = commentService.getCommentsByPostIdAndVerify(postId);
+        return ResponseEntity.ok(comments);
     }
+
     @PatchMapping("/{post-id}/{user-id}/{comment-id}")
     public ResponseEntity<CommentResponseDto> updateComment(@PathVariable(value = "post-id") Long postId,
                                                             @PathVariable(value = "user-id") Long userId,

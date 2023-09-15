@@ -1,13 +1,15 @@
 package com.green.greenEarthForUs.comment.DTO;
 
 
+import com.green.greenEarthForUs.comment.Entity.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDateTime;
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 public class CommentResponseDto {
 
     private Long commentId;
@@ -20,6 +22,13 @@ public class CommentResponseDto {
 
     private LocalDateTime createdAt;
 
+    public CommentResponseDto(Comment comment) {
+        this.commentId = comment.getCommentId();
+        this.userId = comment.getUser().getUserId();
+        this.postId = comment.getPost().getPostId();
+        this.body = comment.getBody();
+        this.createdAt = comment.getCreatedAt();
+    }
 }
 
 

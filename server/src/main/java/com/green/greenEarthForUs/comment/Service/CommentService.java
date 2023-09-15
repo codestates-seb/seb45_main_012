@@ -19,6 +19,7 @@ import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CommentService {
@@ -59,22 +60,34 @@ public class CommentService {
         return responseDto;
     }
 
-    // 게시글 별 댓글 리스트 조회
-    @Transactional
-    public List<Comment> getComments(Long postId, Long userId) {
-        Post post = postRepository.findById(postId)
-                .orElseThrow(() -> new EntityNotFoundException("Post not found" + postId));
+//    // 게시글 별 댓글 리스트 조회
+//    @Transactional
+//    public List<Comment> getComments(Long postId, Long userId) {
+//        Post post = postRepository.findById(postId)
+//                .orElseThrow(() -> new EntityNotFoundException("Post not found" + postId));
+//
+//        User user = userRepository.findById(userId)
+//                .orElseThrow(() -> new EntityNotFoundException("User not found " + userId));
+//
+//        Optional<Comment> optionalComment = commentRepository.findById(postId);
+//
+//        if (!optionalComment.isPresent()) {
+//            throw new BusinessLogicException(ExceptionCode.COMMENT_NOT_FOUND);
+//        }
+//
+//        return commentRepository.findByPost_PostIdAndUser_UserId(post.getPostId(), user.getUserId());
+//    }
 
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found " + userId));
+    // 게시글 별 댓글 조회
+    public List<CommentResponseDto> getCommentsByPostIdAndVerify(Long postId) {
+        List<Comment> commentList = commentRepository.findByPostId(postId);
 
-        Optional<Comment> optionalComment = commentRepository.findById(postId);
-
-        if (!optionalComment.isPresent()) {
-            throw new BusinessLogicException(ExceptionCode.COMMENT_NOT_FOUND);
-        }
-
-        return commentRepository.findByPost_PostIdAndUser_UserId(post.getPostId(), user.getUserId());
+        return commentList.stream()
+                .map(comment -> {
+                    verifyComment(comment.getCommentId());
+                    return new CommentResponseDto(comment);
+                })
+                .collect(Collectors.toList());
     }
 
     // 댓글 수정
@@ -111,7 +124,7 @@ public class CommentService {
         commentRepository.deleteById(commentId);
     }
 
-    private Comment verifyComment(Long commentId) {
+    private Comment verifyComment(Long commentId) { // 댓글 조회, 없으면 예외던지기
         Optional<Comment> commentOptional = commentRepository.findById(commentId);
         return commentOptional.orElseThrow(() -> new BusinessLogicException(ExceptionCode.COMMENT_NOT_FOUND));
     }
