@@ -36,7 +36,7 @@ function PostEditer() {
           postVote(resp.data.postId)
             .then(response => {
               dispatch(setActiveMenu('전체 글 보기'));
-              navigate('/');
+              navigate('/${resp.data.type}/${resp.data.postId}/${resp.data.userId}');
             })
             .catch(error => {});
         })
