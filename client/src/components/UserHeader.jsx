@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faRightFromBracket, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { setActiveMenu } from 'store/menuSlice.ts';
 import { logout, setLoggedIn } from 'store/authSlice.js';
+import Cookies from 'js-cookie';
 
 const UserHeader = ( { isLoggedIn } ) => {
 
@@ -26,6 +27,7 @@ const UserHeader = ( { isLoggedIn } ) => {
   const handleLogout = () => {
     try {
       localStorage.removeItem('accessToken');
+      Cookies.remove('refreshToken')
       dispatch(logout());
       dispatch(setActiveMenu('전체 글 보기'));
       navigate('/');
