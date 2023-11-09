@@ -1,43 +1,45 @@
 .navbar {
-    background-color:white;
-    margin-top: 120px;
-    width: 253px;
-    padding: 20px;
-    box-sizing: border-box;
-    border-right: 5px solid #FAFAFA;
-    position: fixed;
-    height: 100%;
-  }
+  background-color: white;
+  margin-top: 110px;
+  width: 253px;
+  padding: 20px;
+  box-sizing: border-box;
+  border-right: 5px solid #fafafa;
+  position: fixed;
+  height: 100%;
+}
 
-  /* 게시판, 마이페이지 */
-  .text_menu_big {
-    color: #000;
-    font-size: 19px;
-    font-weight: bold;
-    margin-left: 40px;
-    /* margin-top: 40px; */
-    line-height: 60px;
-  }
-  
-  /* 나머지 메뉴 버튼 */
-  .menu_button {
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: transparent;
-    color: #2B2B2B;
-    font-weight: bold;
-    text-align: left;
-    margin-left: 60px;
-    padding: 10px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  /* 클릭 했을 때 */
-  .menu_button.active {
-    background-color: #8dc693;
-    font-weight: bold;
-    color: white;
-  }
+/* 게시판, 마이페이지 */
+.text_menu_big {
+  color: #000;
+  font-size: 19px;
+  font-weight: bold;
+  margin-left: 40px;
+  /* margin-top: 40px; */
+  line-height: 60px;
+}
+
+/* 나머지 메뉴 버튼 */
+.menu_button {
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: transparent;
+  color: #2b2b2b;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 60px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+/* 클릭 했을 때 */
+.menu_button.active {
+  background-color: #8dc693;
+  font-weight: bold;
+  color: white;
+}
