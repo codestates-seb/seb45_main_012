@@ -31,3 +31,14 @@ export interface ModalProps {
 export interface MenuState {
   activeMenu: string;
 }
+
+export interface AuthState {
+  isLoggedIn: boolean;
+  accessToken: string | null;
+  refreshToken: string | null;
+}
+
+export interface RootState {
+  auth: AuthState;
+  menu: MenuState;
+}
