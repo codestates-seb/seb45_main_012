@@ -3,7 +3,7 @@ import "../styles/Header.css";
 import { useDispatch, useSelector } from 'react-redux';
 import UserHeader from './UserHeader.jsx';
 import GuestHeader from './GuestHeader.jsx';
-import { setLoggedIn } from '../store/authSlice.js';
+import { setLoggedIn } from '../store/authSlice.ts';
 
 const AppHeader = () => {
   const dispatch = useDispatch();

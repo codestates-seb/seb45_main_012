@@ -2,7 +2,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
-import { setAccessToken, setRefreshToken } from "store/authSlice.js";
+import { setAccessToken, setRefreshToken } from "store/authSlice.ts";
 
 axios.defaults.withCredentials = true;
 

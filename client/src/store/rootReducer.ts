@@ -1,4 +1,5 @@
-import { combineReducers, Reducer } from '@reduxjs/toolkit';
+import { combineReducers } from '@reduxjs/toolkit';
+import type { Reducer } from '@reduxjs/toolkit';
 import { RootState } from 'types/types.ts';
 import authReducer from './authSlice.ts';
 import menuReducer from './menuSlice.ts';

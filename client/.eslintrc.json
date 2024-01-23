@@ -22,7 +22,13 @@
     "import/extensions": [2, "ignorePackages"]
   },
   "settings": {
+    "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
+      "typescript": {
+          "alwaysTryTypes": true
+      },
       "node": {
         "paths": ["src"], // src 폴더를 모듈 경로로 추가
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
