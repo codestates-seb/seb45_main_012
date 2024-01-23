@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import jwtDecode from 'jwt-decode';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faRightFromBracket, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { setActiveMenu } from 'store/menuSlice.ts';
 import { logout, setLoggedIn } from 'store/authSlice.ts';
+import { UserHeaderProps } from 'types/types.ts';
 import Cookies from 'js-cookie';
 
-const UserHeader = ( { isLoggedIn } ) => {
+const UserHeader: React.FC<UserHeaderProps> = ( { isLoggedIn } ) => {
 
   const accessToken = localStorage.getItem('accessToken');
   const [userName, setUserName] = useState('');
@@ -39,8 +39,8 @@ const UserHeader = ( { isLoggedIn } ) => {
   useEffect(() => {
     if (accessToken) {
       dispatch(setLoggedIn(true));
-      const decodedToken = jwtDecode(accessToken);
-      const userName = decodedToken.userName;
+      const decodedToken: any = jwtDecode(accessToken);
+      const userName: string = decodedToken.userName;
       setUserName(userName);
     }
   }, [accessToken]);
@@ -74,9 +74,5 @@ const UserHeader = ( { isLoggedIn } ) => {
     </header>
   );
 };
-
-UserHeader.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
-}
 
 export default UserHeader;

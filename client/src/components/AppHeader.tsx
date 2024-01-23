@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import "../styles/Header.css";
 import { useDispatch, useSelector } from 'react-redux';
-import UserHeader from './UserHeader.jsx';
+import UserHeader from './UserHeader.tsx';
 import GuestHeader from './GuestHeader.tsx';
 import { setLoggedIn } from '../store/authSlice.ts';
 import { RootState } from 'types/types.ts';

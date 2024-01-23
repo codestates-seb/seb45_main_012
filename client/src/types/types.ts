@@ -32,6 +32,10 @@ export interface GuestHeaderProps {
   isLoggedIn: boolean;
 }
 
+export interface UserHeaderProps {
+  isLoggedIn: boolean;
+}
+
 export interface PaginationProps {
   posts: any[];
   postsPerPage: number;
