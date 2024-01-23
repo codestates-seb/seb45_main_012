@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import UserHeader from './UserHeader.jsx';
 import GuestHeader from './GuestHeader.jsx';
 import { setLoggedIn } from '../store/authSlice.ts';
+import { RootState } from 'types/types.ts';
 
-const AppHeader = () => {
+const AppHeader: React.FC = () => {
   const dispatch = useDispatch();
   const accessToken = localStorage.getItem('accessToken');
 
@@ -18,7 +19,7 @@ const AppHeader = () => {
     dispatch(setLoggedIn(false));
   }, [accessToken]);
 
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const isLoggedIn: boolean = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   return ( 
     <div>
