@@ -1,8 +1,8 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import Cookies from 'js-cookie';
-import { useDispatch } from 'react-redux';
-import { setAccessToken, setRefreshToken } from "store/authSlice.ts";
+// import { useDispatch } from 'react-redux';
+// import { setAccessToken, setRefreshToken } from "store/authSlice.ts";
 
 axios.defaults.withCredentials = true;
 
@@ -181,46 +181,30 @@ export const postLogin = async ( id, password ) => {
   } 
 }
 
+const isValid = (token) => {
+  const decodedToken = jwtDecode(token);
+  const tokenExpTime = new Date(decodedToken.exp * 1000);
+  const currentTime = new Date();
+  return currentTime < tokenExpTime;
+}
+
+async function setHeaders(config) {
+  const accessToken = localStorage.getItem('accessToken');
+
+  if (accessToken) {
+    const refreshToken = Cookies.get('refreshToken');    
+    
+    config.headers['Authorization'] = `Bearer ${accessToken}`;
+    config.headers['Refresh'] = `${refreshToken}`;
+  }
+
+  return config;
+}
+
 instance.interceptors.request.use(
   async function (config) {
     if (config.method === 'get' ) return config;
     else {
-      const isValid = (token) => {
-        const decodedToken = jwtDecode(token)
-        const tokenExpirationTime = decodedToken.exp;
-        const currentTime = Math.floor(Date.now() / 1000);
-        return tokenExpirationTime >= currentTime;
-      }
-      
-      const accessToken = localStorage.getItem('accessToken');
-      const userId = accessToken.userId;
-      const refreshToken = Cookies.get('refreshToken');
-      
-      if (accessToken && isValid(accessToken)) {
-        instance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-        instance.defaults.headers.common['Refresh'] = `${refreshToken}`;
-        return config;
-      } else if (refreshToken && isValid(refreshToken)) {
-        
-          try {
-            const dispatch = useDispatch();
-            const res = await instance.patch(`user/refresh/${userId}`);
-
-            const newAuth = res.headers['authorization'];
-            const newAccessToken = newAuth.substring(6);
-            localStorage.setItem('accessToken', newAccessToken);
-            dispatch(setAccessToken(newAccessToken));
-            instance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
-            
-            const newRefresh = res.headers['refresh'];
-            Cookies.set('refreshToken', newRefresh);
-            dispatch(setRefreshToken(newRefresh));
-            instance.defaults.headers.common['Refresh'] = `${newRefresh}`;
-          } catch (error) {
-            console.error('accessToken을 갱신하지 못했습니다.');
-            throw error;
-          }
-        }
-      }
-  return config;
+      return await setHeaders(config);
+  }
 });
