@@ -39,6 +39,7 @@ export interface PaginationProps {
   currentPage: number;
   setCurrentPage: (page: number) => void;
 }
+
 export interface MenuState {
   activeMenu: string;
 }
