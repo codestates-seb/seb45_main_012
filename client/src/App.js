@@ -15,7 +15,7 @@ import AuthBoardPage from './pages/AuthBoardPage.tsx';
 import AuthDetailPage from './pages/AuthDetailPage.tsx';
 import EnvBoardPage from './pages/EnvBoardPage.tsx';
 
-import AppHeader from './components/AppHeader.jsx';
+import AppHeader from './components/AppHeader.tsx';
 
 import MyPageMain from 'pages/MyPageMain.jsx';
 import MyPageInfo from './pages/MyPageInfo.tsx';
