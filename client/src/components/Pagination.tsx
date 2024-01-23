@@ -4,8 +4,8 @@ import '../styles/Pagination.css';
 import { PaginationProps } from 'types/types.ts';
 
 const Pagination: React.FC<PaginationProps> = ({posts, postsPerPage, pagesPerGroup, currentPage, setCurrentPage }) => {
-  const totalPosts = posts.length;
-  const totalPages = Math.ceil( totalPosts / postsPerPage);
+  const totalPosts: number = posts.length;
+  const totalPages: number = Math.ceil( totalPosts / postsPerPage);
 
   const getPageNumbers = () => {
     const pageNumbers: number[] = [];
@@ -16,12 +16,12 @@ const Pagination: React.FC<PaginationProps> = ({posts, postsPerPage, pagesPerGro
     return pageNumbers;
   }
 
-  const pageNumbers = getPageNumbers();
+  const pageNumbers: number[] = getPageNumbers();
 
   const pageButtons = () => {
-    const groupIndex = Math.ceil(currentPage / pagesPerGroup) - 1;
-    const startIndex = groupIndex * pagesPerGroup + 1;
-    const endIndex = Math.min(startIndex + pagesPerGroup - 1, pageNumbers.length);
+    const groupIndex: number = Math.ceil(currentPage / pagesPerGroup) - 1;
+    const startIndex: number = groupIndex * pagesPerGroup + 1;
+    const endIndex: number = Math.min(startIndex + pagesPerGroup - 1, pageNumbers.length);
 
     return (
       pageNumbers.slice(startIndex-1, endIndex).map((number) => (

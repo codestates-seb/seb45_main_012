@@ -14,7 +14,7 @@
     "plugin:import/recommended",
     "prettier"
   ],
-  "parser": "babel-parser",
+  "parser": "@babel/parser",
   "plugins": ["react", "react-hooks", "jsx-a11y", "import"],
   "rules": {
     "no-unused-vars": "warn",
