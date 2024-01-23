@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/Pagination.css';
+import { PaginationProps } from 'types/types.ts';
 
-const Pagination = ({posts, postsPerPage, pagesPerGroup, currentPage, setCurrentPage }) => {
+const Pagination: React.FC<PaginationProps> = ({posts, postsPerPage, pagesPerGroup, currentPage, setCurrentPage }) => {
   const totalPosts = posts.length;
   const totalPages = Math.ceil( totalPosts / postsPerPage);
 
   const getPageNumbers = () => {
-    const pageNumbers = [];
+    const pageNumbers: number[] = [];
 
     for ( let i = 1 ; i <= totalPages ; i++) {
       pageNumbers.push(i);
@@ -71,13 +72,5 @@ const Pagination = ({posts, postsPerPage, pagesPerGroup, currentPage, setCurrent
       </div>
   )
 }
-
-Pagination.propTypes = {
-  posts: PropTypes.array.isRequired,
-  postsPerPage: PropTypes.number.isRequired,
-  pagesPerGroup: PropTypes.number.isRequired,
-  currentPage: PropTypes.number.isRequired,
-  setCurrentPage: PropTypes.func.isRequired,
-};
 
 export default Pagination;

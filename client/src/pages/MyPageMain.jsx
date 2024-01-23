@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Button.css';
 import '../styles/MyPageMain.css';
-import Pagination from 'components/Pagination.jsx';
+import Pagination from 'components/Pagination.tsx';
 import jwtDecode from 'jwt-decode';
 import { instance } from 'api/api.js';
 import NavBar from 'components/NavBar.tsx';

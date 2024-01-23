@@ -32,6 +32,13 @@ export interface GuestHeaderProps {
   isLoggedIn: boolean;
 }
 
+export interface PaginationProps {
+  posts: any[];
+  postsPerPage: number;
+  pagesPerGroup: number;
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+}
 export interface MenuState {
   activeMenu: string;
 }
