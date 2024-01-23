@@ -28,6 +28,10 @@ export interface ModalProps {
   onConfirm: () => void;
 }
 
+export interface GuestHeaderProps {
+  isLoggedIn: boolean;
+}
+
 export interface MenuState {
   activeMenu: string;
 }

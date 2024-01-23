@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faRightToBracket } from "@fortawesome/free-solid-svg-icons";
+import { GuestHeaderProps } from 'types/types.ts';
 
-const GuestHeader = ( { isLoggedIn } ) => {
+const GuestHeader: React.FC<GuestHeaderProps> = ( { isLoggedIn } ) => {
 
   if (isLoggedIn) {
     return null;
@@ -27,10 +27,6 @@ const GuestHeader = ( { isLoggedIn } ) => {
       </div>
     </header>
   )
-}
-
-GuestHeader.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
 }
 
 export default GuestHeader;
