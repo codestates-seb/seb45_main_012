@@ -6,20 +6,21 @@ import jwtDecode from 'jwt-decode';
 import { instance } from 'api/api.js';
 import NavBar from 'components/NavBar.tsx';
 import { Link } from 'react-router-dom';
+import { MyPosts, DecodedToken } from 'types/types.ts';
 
-const MyPageMain = () => {
+const MyPageMain: React.FC = () => {
   const accessToken = localStorage.getItem('accessToken');
-  const decodedToken = jwtDecode(accessToken);
-  const userId = decodedToken.userId;
+  const decodedToken: any = jwtDecode<DecodedToken>(accessToken);
+  const userId: string = decodedToken.userId;
 
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState<MyPosts[]>([]);
 
   useEffect(() => {
     async function getUserData() {
       try {
         const res = await instance.get('/post/customer/' + userId);
         const sortedUserData = res.data.sort((a, b) => {
-          return new Date(b.createdAt) - new Date(a.createdAt);
+          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
         });
         setUserData(sortedUserData);
       } catch (err) {
@@ -30,8 +31,8 @@ const MyPageMain = () => {
     getUserData();
   }, []);
 
-  const [filter, setFilter] = useState('all');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [filter, setFilter] = useState<string>('all');
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const filteredPosts = userData.filter(post => {
     if (filter === 'all') return true;
@@ -39,7 +40,7 @@ const MyPageMain = () => {
     return post.open === 'false';
   });
 
-  const handleFilterChange = newFilter => {
+  const handleFilterChange = (newFilter: string) => {
     setFilter(newFilter);
     setCurrentPage(1);
   };

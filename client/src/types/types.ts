@@ -22,6 +22,17 @@ export interface AuthPost {
   imageUrl: string;
 }
 
+export interface MyPosts {
+  postId: number;
+  userId: number;
+  type: string;
+  title: string;
+  body: string;
+  open: string;
+  imageUrls: string;
+  createdAt: string;
+}
+
 export interface ModalProps {
   content: React.ReactNode;
   onCancel: () => void;
@@ -57,4 +68,20 @@ export interface AuthState {
 export interface RootState {
   auth: AuthState;
   menu: MenuState;
+}
+
+export interface DecodedToken {
+  HEADER: {
+    alg: string;
+  };
+  PAYLOAD: {
+    password: string;
+    roles: string;
+    userUseId: string;
+    userName: string;
+    userId: number;
+    sub: string;
+    iat: number;
+    exp: number;
+  }
 }

@@ -5,7 +5,7 @@ import './App.css';
 import store from './store/store.ts';
 
 import SignUpPage from './pages/SignUpPage.tsx';
-import Login from './pages/LoginPage.jsx';
+import Login from './pages/LoginPage.tsx';
 import EditerPage from './pages/EditerPage.jsx';
 
 import AllBoardPage from './pages/AllBoardPage.tsx';
@@ -17,7 +17,7 @@ import EnvBoardPage from './pages/EnvBoardPage.tsx';
 
 import AppHeader from './components/AppHeader.tsx';
 
-import MyPageMain from 'pages/MyPageMain.jsx';
+import MyPageMain from 'pages/MyPageMain.tsx';
 import MyPageInfo from './pages/MyPageInfo.tsx';
 import MyPost from 'pages/MyPost.jsx';
 

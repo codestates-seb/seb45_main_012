@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import '../styles/Pagination.css';
 import { PaginationProps } from 'types/types.ts';
 
 const Pagination: React.FC<PaginationProps> = ({posts, postsPerPage, pagesPerGroup, currentPage, setCurrentPage }) => {
-  const totalPosts: number = posts.length;
-  const totalPages: number = Math.ceil( totalPosts / postsPerPage);
+  const totalPosts = posts.length;
+  const totalPages = Math.ceil( totalPosts / postsPerPage);
 
   const getPageNumbers = () => {
     const pageNumbers: number[] = [];
@@ -18,10 +17,10 @@ const Pagination: React.FC<PaginationProps> = ({posts, postsPerPage, pagesPerGro
 
   const pageNumbers: number[] = getPageNumbers();
 
-  const pageButtons = () => {
-    const groupIndex: number = Math.ceil(currentPage / pagesPerGroup) - 1;
-    const startIndex: number = groupIndex * pagesPerGroup + 1;
-    const endIndex: number = Math.min(startIndex + pagesPerGroup - 1, pageNumbers.length);
+  const pageButtons = (): JSX.Element[] => {
+    const groupIndex = Math.ceil(currentPage / pagesPerGroup) - 1;
+    const startIndex = groupIndex * pagesPerGroup + 1;
+    const endIndex = Math.min(startIndex + pagesPerGroup - 1, pageNumbers.length);
 
     return (
       pageNumbers.slice(startIndex-1, endIndex).map((number) => (
@@ -38,14 +37,14 @@ const Pagination: React.FC<PaginationProps> = ({posts, postsPerPage, pagesPerGro
   const pageGroup = Math.ceil(totalPages / pagesPerGroup);
   const currentGroup = Math.ceil(currentPage / pagesPerGroup);
 
-  const previousGroup = () => {
+  const previousGroup = (): void => {
     if (currentGroup > 1) {
       const nextPage = ( currentGroup - 1 ) * pagesPerGroup;
       setCurrentPage(nextPage);
     }
   }
 
-  const nextGroup = () => {
+  const nextGroup = (): void => {
     if (currentGroup < pageGroup) {
       const nextPage = currentGroup * pagesPerGroup + 1;
       setCurrentPage(nextPage);
