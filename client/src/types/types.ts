@@ -71,17 +71,12 @@ export interface RootState {
 }
 
 export interface DecodedToken {
-  HEADER: {
-    alg: string;
-  };
-  PAYLOAD: {
-    password: string;
-    roles: string;
-    userUseId: string;
-    userName: string;
-    userId: number;
-    sub: string;
-    iat: number;
-    exp: number;
-  }
+  password: string;
+  roles: string;
+  userUseId: string;
+  userName: string;
+  userId: number;
+  sub: string;
+  iat: number;
+  exp: number;
 }

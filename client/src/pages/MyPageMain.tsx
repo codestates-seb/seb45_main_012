@@ -10,8 +10,8 @@ import { MyPosts, DecodedToken } from 'types/types.ts';
 
 const MyPageMain: React.FC = () => {
   const accessToken = localStorage.getItem('accessToken');
-  const decodedToken: any = jwtDecode<DecodedToken>(accessToken);
-  const userId: string = decodedToken.userId;
+  const decodedToken: DecodedToken = jwtDecode<DecodedToken>(accessToken);
+  const userId: number = decodedToken.userId;
 
   const [userData, setUserData] = useState<MyPosts[]>([]);
 
@@ -52,7 +52,7 @@ const MyPageMain: React.FC = () => {
   };
 
   const [selectedButton, setSelectedButton] = useState(viewType.ALL);
-  const handleButtonClick = buttonName => {
+  const handleButtonClick = (buttonName: string) => {
     setSelectedButton(buttonName);
   };
 
