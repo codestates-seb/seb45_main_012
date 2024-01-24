@@ -19,7 +19,7 @@ import AppHeader from './components/AppHeader.tsx';
 
 import MyPageMain from 'pages/MyPageMain.tsx';
 import MyPageInfo from './pages/MyPageInfo.tsx';
-import MyPost from 'pages/MyPost.jsx';
+import MyPost from 'pages/MyPost.tsx';
 
 function App() {
   return (

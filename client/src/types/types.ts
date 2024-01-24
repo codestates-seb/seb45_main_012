@@ -33,6 +33,17 @@ export interface MyPosts {
   createdAt: string;
 }
 
+export interface OneOfMyPost {
+  postId: number;
+  userId: number;
+  type: string;
+  title: string;
+  body: string;
+  open: string;
+  imageUrls: string;
+  createdAt: string;
+}
+
 export interface ModalProps {
   content: React.ReactNode;
   onCancel: () => void;
@@ -79,4 +90,8 @@ export interface DecodedToken {
   sub: string;
   iat: number;
   exp: number;
+}
+
+export interface UserData {
+  imageUrl?: string;
 }

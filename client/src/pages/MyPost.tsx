@@ -6,14 +6,15 @@ import NavBar from 'components/NavBar.tsx';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setActiveMenu } from '../store/menuSlice.ts';
+import { DecodedToken, UserData, OneOfMyPost } from 'types/types.ts';
 
-const MyPost = () => {
+const MyPost: React.FC = () => {
   const { postId } = useParams();
-  const [post, setPost] = useState({});
-  const [userData, setUserData] = useState({});
+  const [post, setPost] = useState<OneOfMyPost>({} as OneOfMyPost); //as Post 질문
+  const [userData, setUserData] = useState<UserData>({});
 
   const accessToken = localStorage.getItem('accessToken');
-  const decodedToken = jwtDecode(accessToken);
+  const decodedToken: DecodedToken = jwtDecode<DecodedToken>(accessToken);
   const userId = decodedToken.userId;
   const userName = decodedToken.userName;
 
