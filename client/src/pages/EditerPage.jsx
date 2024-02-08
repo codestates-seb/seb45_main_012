@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PostEditerWithImage, PostEditer } from '../components/PostEditer.jsx';
+import { PostEditerWithImage, PostEditer } from '../components/PostEditer.tsx';
 import '../styles/EditerPage.css';
 import NavBar from 'components/NavBar.tsx';
 

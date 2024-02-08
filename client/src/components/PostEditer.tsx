@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, ChangeEvent } from 'react';
 import '../styles/PostEditer.css';
 import { useDispatch } from 'react-redux';
 import { setActiveMenu } from '../store/menuSlice.ts';
@@ -7,11 +7,12 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { postPosts, postVote } from 'api/api.js';
 import jwtDecode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import { DecodedToken } from 'types/types.ts';
 
 function PostEditer() {
   const accessToken = localStorage.getItem('accessToken');
-  const decodedToken = jwtDecode(accessToken);
-  const userId = decodedToken.userId;
+  const decodedToken: DecodedToken = jwtDecode<DecodedToken>(accessToken);
+  const userId: number = decodedToken.userId;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,10 +25,16 @@ function PostEditer() {
     img: '',
   });
 
-  const handleInputChange = e => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const handleTextAreaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
 
   const handleCreatePost = () => {
     if (formData.title !== '' && formData.body !== '') {
@@ -61,7 +68,7 @@ function PostEditer() {
           placeholder="제목을 입력하세요"
         />
         <textarea
-          onChange={handleInputChange}
+          onChange={handleTextAreaChange}
           name="body"
           value={formData.body}
           className="post_text_area"
@@ -73,8 +80,8 @@ function PostEditer() {
 
 function PostEditerWithImage() {
   const accessToken = localStorage.getItem('accessToken');
-  const decodedToken = jwtDecode(accessToken);
-  const userId = decodedToken.userId;
+  const decodedToken: DecodedToken = jwtDecode<DecodedToken>(accessToken);
+  const userId: number = decodedToken.userId;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -89,20 +96,19 @@ function PostEditerWithImage() {
   const [previewImage, setPreviewImage] = useState(null);
   const imageInputRef = useRef(null);
 
-  const handleFileInputChange = e => {
-    const file = e.target.files[0];
-    setFormData({ ...formData, file });
+  const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
 
     if (file) {
       const reader = new FileReader();
       reader.onload = e => {
-        setPreviewImage(e.target.result);
+        const previewUrl = e.target.result as string;
+        setPreviewImage(previewUrl);
+        setFormData({ ...formData, img: previewUrl });
       };
       reader.readAsDataURL(file);
 
       e.target.value = null;
-
-      setFormData({ ...formData, img: file });
     }
   };
 

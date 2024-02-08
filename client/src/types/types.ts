@@ -1,3 +1,11 @@
+export interface FormData {
+  type: string;
+  title: string;
+  body: string;
+  open: string;
+  img: string | null;
+}
+
 export interface Post {
   createdAt: string;
   postId: number;
