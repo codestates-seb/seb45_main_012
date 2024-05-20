@@ -8,6 +8,7 @@ import { postPosts, postVote } from 'api/api.js';
 import jwtDecode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { DecodedToken } from 'types/types.ts';
+import { PostFormData } from 'types/types.ts';
 
 function PostEditer() {
   const accessToken = localStorage.getItem('accessToken');
@@ -17,7 +18,7 @@ function PostEditer() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<PostFormData>({
     type: 'free',
     title: '',
     body: '',

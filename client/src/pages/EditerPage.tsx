@@ -4,8 +4,8 @@ import '../styles/EditerPage.css';
 import NavBar from 'components/NavBar.tsx';
 
 function EditerPage() {
-  const [selectFreeBoard, setSelectFreeBoard] = useState(true);
-  const [selectPhotoBoard, setSelectPhotoBoard] = useState(false);
+  const [selectFreeBoard, setSelectFreeBoard] = useState<boolean>(true);
+  const [selectPhotoBoard, setSelectPhotoBoard] = useState<boolean>(false);
 
   const handleSelectFreeBoard = () => {
     setSelectFreeBoard(selectFreeBoard => true);

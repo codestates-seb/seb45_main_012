@@ -103,3 +103,11 @@ export interface DecodedToken {
 export interface UserData {
   imageUrl?: string;
 }
+
+export interface PostFormData {
+  type: string;
+  title: string;
+  body: string;
+  open: string;
+  img: string;
+}

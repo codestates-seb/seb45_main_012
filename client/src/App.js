@@ -6,7 +6,7 @@ import store from './store/store.ts';
 
 import SignUpPage from './pages/SignUpPage.tsx';
 import Login from './pages/LoginPage.tsx';
-import EditerPage from './pages/EditerPage.jsx';
+import EditerPage from './pages/EditerPage.tsx';
 
 import AllBoardPage from './pages/AllBoardPage.tsx';
 import FreeBoardPage from './pages/FreeBoardPage.tsx';

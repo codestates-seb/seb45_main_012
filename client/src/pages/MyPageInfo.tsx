@@ -74,6 +74,7 @@ const MyPageInfo: React.FC = () => {
       reader.readAsDataURL(file);
     }
   };
+  
   const handleButtonClick = () => {
     alert('서비스 준비중입니다.');
   };
@@ -89,18 +90,15 @@ const MyPageInfo: React.FC = () => {
 
   return (
     <>
-      <div>
-        <NavBar />
-      </div>
+      <NavBar />
+
       <div className="page_container">
         <h3 className="my_info">내 정보</h3>
-        <div className="my_custom_container">
-          <div className="circle_container">
-            <input type="file" id="imageInput" className="circle_input" accept="image/*" onChange={handleImageChange} />
-            <div></div>
+        <div className="image_nickname_container">
+          <div className="profile_image">
+            <input type="file" id="imageInput" className="profile_image_uploader" accept="image/*" onChange={handleImageChange} />
             <img src={previewImageUrl} alt="" className="circle_image" />
           </div>
-
           <div className="input_container">
             <input type="text" id="nicknameInput" className="nickname_input" placeholder="닉네임" />
           </div>
@@ -109,19 +107,19 @@ const MyPageInfo: React.FC = () => {
           </button>
         </div>
 
-        <div className="my_custom_container id_container">
+        <div className="id_container">
           <label htmlFor="idInput" className="custom_label_id">
             아이디
           </label>
           <div className="input_container">
-            <input type="text" id="idInput" className="nickname_input" placeholder="아이디" />
+            <input type="text" id="idInput" className="id_input" placeholder="아이디" />
           </div>
           <button className="custom_mypage_button confirm_button" onClick={handleButtonClick}>
             수정
           </button>
         </div>
 
-        <div className="my_custom_container">
+        <div className="password_container">
           <label htmlFor="pwInput" className="custom_label_pw">
             비밀번호
           </label>
