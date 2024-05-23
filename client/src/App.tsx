@@ -2,26 +2,26 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import './App.css';
-import store from './store/store.ts';
+import store from './store/store';
 
-import SignUpPage from './pages/SignUpPage.tsx';
-import Login from './pages/LoginPage.tsx';
-import EditerPage from './pages/EditerPage.tsx';
+import SignUpPage from './pages/SignUpPage';
+import Login from './pages/LoginPage';
+import EditerPage from './pages/EditerPage';
 
-import AllBoardPage from './pages/AllBoardPage.tsx';
-import FreeBoardPage from './pages/FreeBoardPage.tsx';
-import FreeDetailPage from './pages/FreeDetailPage.tsx';
-import AuthBoardPage from './pages/AuthBoardPage.tsx';
-import AuthDetailPage from './pages/AuthDetailPage.tsx';
-import EnvBoardPage from './pages/EnvBoardPage.tsx';
+import AllBoardPage from './pages/AllBoardPage';
+import FreeBoardPage from './pages/FreeBoardPage';
+import FreeDetailPage from './pages/FreeDetailPage';
+import AuthBoardPage from './pages/AuthBoardPage';
+import AuthDetailPage from './pages/AuthDetailPage';
+import EnvBoardPage from './pages/EnvBoardPage';
 
-import AppHeader from './components/AppHeader.tsx';
+import AppHeader from './components/AppHeader';
 
-import MyPageMain from 'pages/MyPageMain.tsx';
-import MyPageInfo from './pages/MyPageInfo.tsx';
-import MyPost from 'pages/MyPost.tsx';
+import MyPageMain from './pages/MyPageMain';
+import MyPageInfo from './pages/MyPageInfo';
+import MyPost from './pages/MyPost';
 
-function App() {
+const App: React.FC = () => {
   return (
     <Provider store={store}>
       <div className="App">
@@ -41,7 +41,7 @@ function App() {
 
             <Route path="/mypage/main" element={<MyPageMain />} />
             <Route path="/mypage/info" element={<MyPageInfo />} />
-            <Route path="mypage/posts/:postId" element={<MyPost />} />
+            <Route path="/mypage/posts/:postId" element={<MyPost />} />
           </Routes>
         </Router>
       </div>
