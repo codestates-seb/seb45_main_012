@@ -1,8 +1,8 @@
 import React from 'react';
 import '../styles/Button.css';
-import '../components/PostList';
-import EnvPostList from '../components/EnvPostList';
-import NavBar from '../components/NavBar';
+import '../components/PostList.tsx';
+import EnvPostList from '../components/EnvPostList.tsx';
+import NavBar from '../components/NavBar.tsx';
 
 const EnvBoardPage: React.FC = () => {
   return (

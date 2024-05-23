@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { MenuState } from '../types/types';
+import { createSlice} from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { MenuState } from '../types/types.ts';
 
 // 초기 상태를 정의합니다.
 const initialState: MenuState = {

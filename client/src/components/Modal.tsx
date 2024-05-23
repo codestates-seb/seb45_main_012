@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/Button.css';
 import '../styles/Modal.css';
 import PropTypes from 'prop-types';
-import { ModalProps } from '../types/types';
+import { ModalProps } from '../types/types.ts';
 
 const Modal: React.FC<ModalProps> = ({ content, onCancel, onConfirm }) => {
   return (

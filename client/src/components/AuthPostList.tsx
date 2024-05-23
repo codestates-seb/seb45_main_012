@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/AuthPostList.css';
 import { getAuthPosts } from 'api/api.js';
-import { AuthPost } from '../types/types';
+import { AuthPost } from '../types/types.ts';
 
 const AuthPostList: React.FC = () => {
   const [allAuthPosts, setAllAuthPosts] = useState<AuthPost[]>([]);

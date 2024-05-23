@@ -3,14 +3,24 @@
     "jsx": "react",
     "baseUrl": "./src",
     "allowJs": true,
+    "checkJs": true,
     "target": "ES5",
     "outDir": "./dist",
     "moduleResolution": "Node",
     "lib": ["ES2015", "DOM", "DOM.Iterable"],
+    "resolveJsonModule": true,
     "esModuleInterop": true,
+    "removeComments": true,
     "allowImportingTsExtensions": true,
-    "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "./src/**/*",
+    "./src/declarations.d.ts",
+    "src/types/types.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

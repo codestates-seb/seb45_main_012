@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import '../styles/Button.css';
 import '../styles/BoardDetailPage.css';
-import NavBar from '../components/NavBar';
+import NavBar from '../components/NavBar.tsx';
 import { getPost, getUser, getComment, postComment, getVote, patchVote } from '../api/api.js';
 
 const AuthDetailPage: React.FC = () => {

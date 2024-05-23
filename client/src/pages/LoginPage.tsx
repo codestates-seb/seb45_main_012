@@ -5,7 +5,7 @@ import { setActiveMenu } from '../store/menuSlice.ts';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
 
-const LogIn = () => {
+const LogIn: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -13,15 +13,15 @@ const LogIn = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const emailHandler = e => {
+  const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setId(e.target.value);
   };
 
-  const passwordHandler = e => {
+  const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
-  const submitHandler = async e => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/EnvPostList.css';
 import { getEnvPosts } from 'api/api.js';
-import { AuthPost } from '../types/types';
+import { AuthPost } from '../types/types.ts';
 
 const EnvPostList = () => {
   const [allEnvPosts, setAllEnvPosts] = useState<AuthPost[]>([]);

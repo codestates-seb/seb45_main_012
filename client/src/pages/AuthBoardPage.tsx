@@ -1,8 +1,8 @@
 import React from 'react';
 import '../styles/Button.css';
-import '../components/PostList';
-import AuthPostList from '../components/AuthPostList';
-import NavBar from '../components/NavBar';
+import '../components/PostList.tsx';
+import AuthPostList from '../components/AuthPostList.tsx';
+import NavBar from '../components/NavBar.tsx';
 
 const AuthBoardPage: React.FC = () => {
   return (

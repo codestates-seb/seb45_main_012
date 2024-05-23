@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Button.css';
-import PostList from '../components/PostList';
-import NavBar from '../components/NavBar';
+import PostList from '../components/PostList.tsx';
+import NavBar from '../components/NavBar.tsx';
 
 const FreeBoardPage: React.FC = () => {
   return (
