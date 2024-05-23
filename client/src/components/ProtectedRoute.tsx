@@ -24,7 +24,7 @@ const ProtectedRoute: React.FC = () => {
 
   if (isExpired) {
     logout();
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" state={{ message: '시간이 오래 지나 로그아웃되었습니다. 다시 로그인해주세요.' }} />;
   }
    
   return <Outlet />;
