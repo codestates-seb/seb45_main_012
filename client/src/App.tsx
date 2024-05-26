@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import './App.css';
@@ -21,6 +21,8 @@ import MyPageMain from './pages/MyPageMain';
 import MyPageInfo from './pages/MyPageInfo';
 import MyPost from './pages/MyPost';
 
+import ProtectedRoute from 'components/ProtectedRoute';
+
 const App: React.FC = () => {
   return (
     <Provider store={store}>
@@ -28,20 +30,24 @@ const App: React.FC = () => {
         <Router>
           <AppHeader />
           <Routes>
-            <Route path="/" element={<AllBoardPage />} />
+
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/posts/write" element={<EditerPage />} />
 
+            <Route path="/" element={<AllBoardPage />} />
             <Route path="/free" element={<FreeBoardPage />} />
             <Route path="/free/:postId/:userId" element={<FreeDetailPage />} />
             <Route path="/auth" element={<AuthBoardPage />} />
             <Route path="/auth/:postId/:userId" element={<AuthDetailPage />} />
             <Route path="/env" element={<EnvBoardPage />} />
 
-            <Route path="/mypage/main" element={<MyPageMain />} />
-            <Route path="/mypage/info" element={<MyPageInfo />} />
-            <Route path="/mypage/posts/:postId" element={<MyPost />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/posts/write" element={<EditerPage />} />
+
+              <Route path="/mypage/main" element={<MyPageMain />} />
+              <Route path="/mypage/info" element={<MyPageInfo />} />
+              <Route path="/mypage/posts/:postId" element={<MyPost />} />
+            </Route>
           </Routes>
         </Router>
       </div>
