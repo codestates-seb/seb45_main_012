@@ -33,15 +33,16 @@ const App: React.FC = () => {
 
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUpPage />} />
-            <Route element={<ProtectedRoute />}>
-              <Route path="/" element={<AllBoardPage />} />
-              <Route path="/posts/write" element={<EditerPage />} />
 
-              <Route path="/free" element={<FreeBoardPage />} />
-              <Route path="/free/:postId/:userId" element={<FreeDetailPage />} />
-              <Route path="/auth" element={<AuthBoardPage />} />
-              <Route path="/auth/:postId/:userId" element={<AuthDetailPage />} />
-              <Route path="/env" element={<EnvBoardPage />} />
+            <Route path="/" element={<AllBoardPage />} />
+            <Route path="/free" element={<FreeBoardPage />} />
+            <Route path="/free/:postId/:userId" element={<FreeDetailPage />} />
+            <Route path="/auth" element={<AuthBoardPage />} />
+            <Route path="/auth/:postId/:userId" element={<AuthDetailPage />} />
+            <Route path="/env" element={<EnvBoardPage />} />
+
+            <Route element={<ProtectedRoute />}>
+              <Route path="/posts/write" element={<EditerPage />} />
 
               <Route path="/mypage/main" element={<MyPageMain />} />
               <Route path="/mypage/info" element={<MyPageInfo />} />
